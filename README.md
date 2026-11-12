@@ -16,12 +16,12 @@ Display the current time in up to four different time zones, with customizable l
 
 ## Default configuration
 
-| Clock | Label | Time zone |
-|---|---|---|
-| 1 | Locale | Europe/Zurich |
-| 2 | Beyrouth | Asia/Beirut |
-| 3 | Casablanca | Africa/Casablanca |
-| 4 | Paris | Europe/Paris |
+| Clock | Label      | Time zone         |
+| ----- | ---------- | ----------------- |
+| 1     | Locale     | Europe/Zurich     |
+| 2     | Beyrouth   | Asia/Beirut       |
+| 3     | Casablanca | Africa/Casablanca |
+| 4     | Paris      | Europe/Paris      |
 
 These are default values. Users can change the names and time zones.
 
@@ -51,10 +51,10 @@ Installation availability depends on the integration being successfully publishe
 
 The widget is designed to accept nine settings:
 
-| Setting | Description |
-|---|---|
-| `clock_count` | Number of clocks (1–4) |
-| `name_1` to `name_4` | Custom clock labels |
+| Setting                      | Description                |
+| ---------------------------- | -------------------------- |
+| `clock_count`                | Number of clocks (1–4)     |
+| `name_1` to `name_4`         | Custom clock labels        |
 | `timezone_1` to `timezone_4` | IANA time zone identifiers |
 
 Time zone conversion uses JavaScript's `Intl.DateTimeFormat` API.

@@ -1,4 +1,3 @@
-
 import { GladysIntegration, logger } from '@gladysassistant/integration-sdk';
 import { WIDGETS } from './src/widgets.js';
 
@@ -6,9 +5,7 @@ const gladys = new GladysIntegration();
 
 // Enregistrer les widgets avant la connexion.
 for (const [widgetKey, widget] of Object.entries(WIDGETS)) {
-  gladys.onWidgetGet(widgetKey, (request) =>
-    widget.get(gladys, request)
-  );
+  gladys.onWidgetGet(widgetKey, (request) => widget.get(gladys, request));
 }
 
 gladys.on('connected', async () => {

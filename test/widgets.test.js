@@ -1,11 +1,7 @@
-
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import {
-  clockRows,
-  formatClock,
-} from '../src/worldClocks.js';
+import { clockRows, formatClock } from '../src/worldClocks.js';
 
 test('formats time in Paris', () => {
   const date = new Date('2026-01-15T12:00:00Z');
@@ -39,13 +35,7 @@ test('supports custom names', () => {
 });
 
 test('handles daylight saving time', () => {
-  assert.equal(
-    formatClock('Europe/Paris', new Date('2026-01-15T12:00:00Z')),
-    '13:00'
-  );
+  assert.equal(formatClock('Europe/Paris', new Date('2026-01-15T12:00:00Z')), '13:00');
 
-  assert.equal(
-    formatClock('Europe/Paris', new Date('2026-07-15T12:00:00Z')),
-    '14:00'
-  );
+  assert.equal(formatClock('Europe/Paris', new Date('2026-07-15T12:00:00Z')), '14:00');
 });

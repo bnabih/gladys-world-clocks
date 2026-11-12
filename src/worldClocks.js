@@ -1,4 +1,3 @@
-
 export const DEFAULT_CLOCKS = [
   { name: 'Locale', timezone: 'Europe/Zurich' },
   { name: 'Beyrouth', timezone: 'Asia/Beirut' },
@@ -16,20 +15,14 @@ export function formatClock(timezone, date = new Date()) {
 }
 
 export function clockRows(settings = {}, date = new Date()) {
-  const count = Math.max(
-    1,
-    Math.min(4, Number(settings.clock_count ?? 4) || 4)
-  );
+  const count = Math.max(1, Math.min(4, Number(settings.clock_count ?? 4) || 4));
 
   return DEFAULT_CLOCKS.slice(0, count).map((fallback, index) => {
     const n = index + 1;
 
-    const timezone =
-      settings[`timezone_${n}`] || fallback.timezone;
+    const timezone = settings[`timezone_${n}`] || fallback.timezone;
 
-    const name = String(
-      settings[`name_${n}`] || fallback.name
-    ).slice(0, 80);
+    const name = String(settings[`name_${n}`] || fallback.name).slice(0, 80);
 
     let time;
 

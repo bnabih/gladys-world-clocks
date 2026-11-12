@@ -1,4 +1,3 @@
-
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -7,22 +6,12 @@ import { WIDGETS } from '../src/widgets.js';
 import { DEFAULT_CLOCKS } from '../src/worldClocks.js';
 
 const manifest = JSON.parse(
-  await readFile(
-    new URL('../gladys-assistant-integration.json', import.meta.url),
-    'utf8'
-  )
+  await readFile(new URL('../gladys-assistant-integration.json', import.meta.url), 'utf8'),
 );
 
-const pkg = JSON.parse(
-  await readFile(
-    new URL('../package.json', import.meta.url),
-    'utf8'
-  )
-);
+const pkg = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
 
-const widget = manifest.widgets?.find(
-  (item) => item.key === 'world_clocks'
-);
+const widget = manifest.widgets?.find((item) => item.key === 'world_clocks');
 
 const settings = widget?.settings ?? [];
 
@@ -31,10 +20,7 @@ function getSetting(key) {
 }
 
 test('manifest has a valid name', () => {
-  assert.ok(
-    typeof manifest.name === 'string' &&
-    manifest.name.length > 0
-  );
+  assert.ok(typeof manifest.name === 'string' && manifest.name.length > 0);
 });
 
 test('manifest version matches package version', () => {
@@ -42,10 +28,7 @@ test('manifest version matches package version', () => {
 });
 
 test('Docker image matches the release version', () => {
-  assert.equal(
-    manifest.docker_image,
-    `ghcr.io/bnabih/gladys-world-clocks:${pkg.version}`
-  );
+  assert.equal(manifest.docker_image, `ghcr.io/bnabih/gladys-world-clocks:${pkg.version}`);
 });
 
 test('Gladys minimum version is compatible', () => {
@@ -71,9 +54,7 @@ test('clock_count is configurable', () => {
   assert.ok(field, 'clock_count is missing');
 
   if (field.type === 'select') {
-    const values = field.options.map((option) =>
-      Number(option.value)
-    );
+    const values = field.options.map((option) => Number(option.value));
 
     assert.deepEqual(values, [1, 2, 3, 4]);
   } else {
@@ -112,7 +93,7 @@ test('default timezones are available', () => {
 
     assert.ok(
       field.options.some((option) => option.value === timezone),
-      `${timezone} is missing from timezone_${i}`
+      `${timezone} is missing from timezone_${i}`,
     );
   }
 });
@@ -134,7 +115,7 @@ test('default clocks have valid timezones', () => {
 test('demo widgets are removed', () => {
   assert.equal(
     manifest.widgets.some((item) => item.key === 'demo_status'),
-    false
+    false,
   );
 });
 
