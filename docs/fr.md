@@ -1,67 +1,205 @@
-# Template de démonstration
+# Gladys World Clocks — Documentation française
 
-Ceci est la documentation utilisateur de l'intégration. Gladys ré-héberge ce
-fichier et affiche un lien **Documentation** permanent vers lui dans l'écran
-de configuration (dans la langue de l'utilisateur, avec l'anglais en repli) —
-c'est au moment de configurer que l'utilisateur en a le plus besoin. Gardez
-les courtes indications d'accueil dans les blocs `section` du `config_schema`
-du manifest ; mettez ici le pas-à-pas détaillé (captures d'écran, dépannage…).
+## Présentation
 
-## Ce que vous obtenez
+**Gladys World Clocks** est une intégration externe pour Gladys Assistant permettant d'afficher jusqu'à quatre horloges internationales dans un seul widget du tableau de bord.
 
-Six appareils de démonstration apparaissent après l'installation : une
-station météo (vraies données Open-Meteo), un interrupteur, une lampe
-variable, une prise connectée avec mesure de puissance, un détecteur de
-mouvement et une caméra.
+Elle est particulièrement utile pour suivre l'heure de plusieurs villes ou pays sans effectuer de conversions horaires manuelles.
+
+## Fonctionnalités
+
+- Affichage de 1, 2, 3 ou 4 horloges.
+- Nom personnalisable pour chaque horloge.
+- Sélection du fuseau horaire dans une liste déroulante IANA.
+- Format horaire 24 heures.
+- Gestion automatique de l'heure d'été et de l'heure d'hiver.
+- Configuration directement dans le dashboard Gladys.
+- Cache du widget de 10 secondes.
+
+## Prérequis
+
+- Gladys Assistant 5.3.2.
+- Raspberry Pi 64 bits ou autre serveur Docker compatible.
+- Accès à l'interface web Gladys.
+- Connexion Internet pour télécharger l'intégration.
+
+Aucun accès SSH n'est nécessaire pour l'installation depuis Gladys.
+
+## Installation
+
+1. Ouvrez Gladys Assistant.
+2. Accédez au menu **Intégrations**.
+3. Choisissez **Installer une intégration**.
+4. Ajoutez l'intégration à partir du dépôt GitHub :
+
+   https://github.com/bnabih/gladys-world-clocks
+
+5. Lancez l'installation.
+6. Attendez que l'intégration soit démarrée.
+
+Si l'intégration n'apparaît pas dans le catalogue, utilisez l'option d'installation depuis GitHub disponible dans votre version de Gladys.
+
+## Ajouter le widget
+
+1. Ouvrez le **Dashboard**.
+2. Cliquez sur **Éditer**.
+3. Sélectionnez **Ajouter un widget**.
+4. Recherchez **World Clocks**.
+5. Ajoutez le widget à votre tableau de bord.
+6. Configurez les horloges.
+7. Enregistrez les modifications.
 
 ## Configuration
 
-1. Ouvrez l'onglet **Configuration** de l'intégration.
-2. Renseignez la **latitude** et la **longitude** que la station météo de
-   démonstration doit observer (Paris par défaut), et choisissez votre unité
-   de température. L'**intervalle de rafraîchissement** règle la fréquence
-   de lecture de la station météo et de la puissance de la prise : toutes
-   les 5 minutes par défaut, toutes les minutes au plus.
-3. Enregistrez : les appareils apparaissent dans l'onglet **Découverte**,
-   prêts à être ajoutés.
+Le widget propose neuf paramètres.
 
-Le réglage **Préférer la connexion locale** pilote la prise de
-démonstration : elle affiche en badge le canal réellement utilisé (local ou
-cloud), avec un point orange quand elle fonctionne en mode dégradé (local
-refusé, bascule cloud).
+| Paramètre | Description |
+|---|---|
+| `clock_count` | Nombre d'horloges à afficher (1 à 4) |
+| `name_1` | Nom de la première horloge |
+| `timezone_1` | Fuseau horaire de la première horloge |
+| `name_2` | Nom de la deuxième horloge |
+| `timezone_2` | Fuseau horaire de la deuxième horloge |
+| `name_3` | Nom de la troisième horloge |
+| `timezone_3` | Fuseau horaire de la troisième horloge |
+| `name_4` | Nom de la quatrième horloge |
+| `timezone_4` | Fuseau horaire de la quatrième horloge |
 
-## Actions
+Les paramètres des horloges non affichées sont conservés dans la configuration du widget.
 
-- **Tester le fournisseur météo** — effectue une requête en direct vers
-  Open-Meteo et affiche la température et l'humidité actuelles sous le
-  bouton.
-- **Identifier un appareil** — choisissez un de vos appareils dans la liste
-  et il se signale (la lampe de démonstration « clignote » dans les logs).
+### Configuration initiale
 
-## Scènes
+| Horloge | Nom | Fuseau horaire |
+|---|---|---|
+| 1 | Locale | Europe/Zurich |
+| 2 | Beyrouth | Asia/Beirut |
+| 3 | Casablanca | Africa/Casablanca |
+| 4 | Paris | Europe/Paris |
 
-L'intégration ajoute ses propres cartes à l'éditeur de scènes (Gladys 5.1
-ou plus récent), dans la catégorie **Intégrations** :
+Ces valeurs peuvent être modifiées à tout moment.
 
-- **Mouvement détecté** (déclencheur) — lance la scène quand un détecteur
-  de démonstration voit bouger quelque chose. Choisissez éventuellement le
-  détecteur et ce qui a bougé (personne, animal) ; laissés vides, toute
-  détection correspond. Les actions suivantes peuvent lire ce qui a bougé
-  avec `{{triggerEvent.data.target}}`.
-- **Identifier un appareil** (action) — fait se signaler l'appareil choisi.
-  Elle indique si l'appareil a pu se signaler, pour que les actions
-  suivantes puissent en dépendre.
+### Choisir un fuseau horaire
 
-## Tableau de bord
+Chaque horloge dispose d'une liste déroulante contenant des fuseaux horaires géographiques IANA.
 
-Ajoutez le widget **État de la démo** à un tableau de bord : il affiche en
-direct la température de la station météo et la puissance de la prise du
-bureau, la connexion utilisée par la prise (en orange si dégradée) et la
-position observée. Son bouton **Identifier la lampe** fait se signaler la
-lampe de démonstration.
+Exemples :
+
+- `Europe/Zurich`
+- `Europe/Paris`
+- `Asia/Beirut`
+- `Africa/Casablanca`
+- `America/New_York`
+- `Asia/Tokyo`
+- `Pacific/Auckland`
+
+La liste est définie dans le manifeste de l'intégration. Elle ne comprend pas nécessairement tous les alias historiques IANA.
+
+### Modifier le nombre d'horloges
+
+Dans les paramètres du widget, choisissez une valeur entre 1 et 4.
+
+Si vous passez de quatre à deux horloges, seules les deux premières sont affichées. Les paramètres des autres horloges restent enregistrés.
+
+## Fonctionnement de l'heure
+
+L'intégration utilise l'API JavaScript `Intl.DateTimeFormat` pour calculer l'heure dans chaque fuseau horaire.
+
+Les changements d'heure été/hiver sont gérés automatiquement selon les données de fuseaux horaires disponibles dans l'environnement Node.js.
+
+Aucune API météo ou service horaire externe n'est nécessaire.
+
+## Actualisation et synchronisation
+
+Le widget utilise actuellement :
+
+```javascript
+ttl_seconds: 10
+```
+
+Cette valeur correspond à une durée de cache de 10 secondes.
+
+Elle ne signifie pas que l'affichage est garanti exactement toutes les 10 secondes.
+
+Contrairement à l'horloge native de Gladys, l'heure est calculée côté intégration puis transmise au dashboard.
+
+Un léger décalage peut donc apparaître lors du changement de minute.
+
+**Exemple :**
+
+- Horloge native Gladys : `16:34`
+- World Clocks : `16:33`
+
+Le widget peut afficher la nouvelle minute quelques secondes plus tard.
+
+Ce comportement ne signifie pas nécessairement que le fuseau horaire est incorrect.
 
 ## Dépannage
 
-L'intégration journalise tout ce qu'elle fait : consultez les logs de
-l'intégration depuis l'interface Gladys (ou `docker logs` sur l'hôte) avec
-`LOG_LEVEL=debug` pour le détail complet.
+### L'intégration affiche « This integration has no configuration options »
+
+C'est normal.
+
+Les paramètres des horloges sont définis dans le widget du dashboard, et non dans la configuration générale de l'intégration.
+
+### Le widget n'apparaît pas
+
+Vérifiez que :
+
+1. L'intégration est installée.
+2. Son conteneur est démarré.
+3. La version publiée contient le widget `world_clocks`.
+4. Le dashboard est en mode édition.
+
+### L'heure est en retard
+
+Attendez le prochain rafraîchissement du widget.
+
+Vérifiez que l'intégration installée utilise bien la version avec un cache de 10 secondes.
+
+Un léger décalage reste possible.
+
+### L'heure est incorrecte de plusieurs heures
+
+Vérifiez le fuseau horaire sélectionné.
+
+Par exemple, `Europe/Zurich` et `Europe/Paris` affichent normalement la même heure, tandis que `Asia/Beirut` utilise un autre fuseau.
+
+### Une ville n'apparaît pas
+
+Vérifiez que le nombre d'horloges configuré est suffisant et que le fuseau souhaité est disponible dans la liste déroulante.
+
+## Mettre à jour l'intégration
+
+Lorsqu'une nouvelle version est publiée :
+
+1. Ouvrez **Intégrations** dans Gladys.
+2. Sélectionnez **Gladys World Clocks**.
+3. Vérifiez si une mise à jour est proposée.
+4. Installez la nouvelle version.
+5. Attendez le redémarrage de l'intégration.
+6. Vérifiez le dashboard.
+
+Les nouvelles versions sont publiées depuis GitHub Actions et distribuées sous forme d'images Docker.
+
+## Limites connues
+
+- La synchronisation avec l'horloge native n'est pas exacte à la seconde.
+- Le widget actuel affiche les heures et les minutes, sans secondes défilantes.
+- Les paramètres sont limités à quatre horloges par instance.
+- Les options de fuseaux horaires sont définies dans le manifeste.
+
+## Support et code source
+
+Dépôt GitHub :
+
+https://github.com/bnabih/gladys-world-clocks
+
+Pour signaler un problème :
+
+https://github.com/bnabih/gladys-world-clocks/issues
+
+## Licence
+
+Apache License 2.0.
+
+Consultez le fichier `LICENSE` à la racine du dépôt.
