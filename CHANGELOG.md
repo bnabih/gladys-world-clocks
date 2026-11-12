@@ -10,6 +10,8 @@ the notes of the version's GitHub Release.
 
 ## [Unreleased]
 
+## [1.0.2] - 2026-11-12
+
 ## [1.0.1] - 2026-11-12
 
 ### Added
@@ -57,5 +59,6 @@ the notes of the version's GitHub Release.
   the previous tag, which may not exist on the registry. Sub-containers on a
   third-party image (a broker, a database...) keep theirs.
 
-[Unreleased]: https://github.com/bnabih/gladys-world-clocks/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/bnabih/gladys-world-clocks/compare/v1.0.2...HEAD
+[1.0.2]: https://github.com/bnabih/gladys-world-clocks/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/bnabih/gladys-world-clocks/releases/tag/v1.0.1
