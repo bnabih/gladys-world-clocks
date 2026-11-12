@@ -1,126 +1,117 @@
 # Gladys World Clocks
 
-A configurable world clock dashboard widget for **Gladys Assistant**.
+**A configurable world clock widget for Gladys Assistant.**
 
-Display the current time in up to four different time zones, with customizable labels and automatic daylight saving time adjustments.
+Display the current time in up to four different time zones directly on your Gladys Assistant dashboard.
+
+Gladys World Clocks is a lightweight external integration designed for users who want to monitor multiple cities and time zones from a single dashboard widget.
 
 ## Features
 
-- Display 1, 2, 3 or 4 clocks in a single dashboard widget.
-- Customize the name of each clock.
-- Select time zones from an IANA time zone dropdown.
-- Use the 24-hour time format.
-- Automatically handle daylight saving time changes.
-- Configure each clock directly from the Gladys dashboard.
-- Preserve the configuration of hidden clocks.
+- **1 to 4 clocks** in a single widget
+- **Custom labels** for each clock
+- **IANA time zone selection** using dropdown menus
+- **24-hour time format**
+- **Automatic daylight saving time adjustments**
+- **Independent configuration** for each widget instance
+- **10-second cache duration** to reduce display delays
+- **Multi-architecture Docker support** for AMD64 and ARM64
+- **No API key or external time service required**
 
-## Default configuration
+## Default clocks
 
-| Clock | Label      | Time zone         |
-| ----- | ---------- | ----------------- |
-| 1     | Locale     | Europe/Zurich     |
-| 2     | Beyrouth   | Asia/Beirut       |
-| 3     | Casablanca | Africa/Casablanca |
-| 4     | Paris      | Europe/Paris      |
+| Label | IANA time zone |
+|---|---|
+| Locale | Europe/Zurich |
+| Beyrouth | Asia/Beirut |
+| Casablanca | Africa/Casablanca |
+| Paris | Europe/Paris |
 
-These are default values. Users can change the names and time zones.
+All labels and time zones can be customized.
 
 ## Requirements
 
-- Gladys Assistant 5.3.2 (target version)
-- Raspberry Pi or another compatible Docker host
-- Gladys external integration support
+- Gladys Assistant 5.3.2 (tested installation)
+- A compatible Docker host, including a 64-bit Raspberry Pi
+- Internet access for initial installation
 
 ## Installation
 
-**Development status: not yet released or validated on Gladys 5.3.2.**
+1. Open **Gladys Assistant**.
+2. Navigate to **Integrations**.
+3. Select the option to install an external integration.
+4. Use the GitHub repository URL:
 
-Once a compatible Docker image has been built and published:
+   `https://github.com/bnabih/gladys-world-clocks`
 
-1. Open Gladys Assistant.
-2. Navigate to Integrations.
-3. Find the World Clocks integration.
-4. Install and start the integration.
-5. Open the dashboard editor.
-6. Add the World Clocks widget.
-7. Configure the number of clocks, labels and time zones.
+5. Install and start the integration.
+6. Open your Gladys dashboard.
+7. Enter dashboard edit mode.
+8. Add the **World Clocks** widget.
+9. Configure your clocks and save.
 
-Installation availability depends on the integration being successfully published and recognized by Gladys.
+**Note:** The integration has no global configuration options. Clock settings are configured directly inside the dashboard widget.
 
-## Configuration
+## Refresh behavior
 
-The widget is designed to accept nine settings:
+The integration currently uses a cache duration of 10 seconds.
 
-| Setting                      | Description                |
-| ---------------------------- | -------------------------- |
-| `clock_count`                | Number of clocks (1–4)     |
-| `name_1` to `name_4`         | Custom clock labels        |
-| `timezone_1` to `timezone_4` | IANA time zone identifiers |
+This reduces the delay compared with the original 60-second configuration, but does not guarantee exact synchronization with Gladys Assistant's built-in clock.
 
-Time zone conversion uses JavaScript's `Intl.DateTimeFormat` API.
+At minute boundaries, a short display delay may occur.
 
-The widget requests a cache duration of 60 seconds. Actual dashboard refresh behavior depends on Gladys.
+## Documentation
 
-## Project structure
-
-```text
-gladys-world-clocks/
-├── index.js
-├── src/
-│   ├── widgets.js
-│   └── worldClocks.js
-├── gladys-assistant-integration.json
-├── package.json
-├── package-lock.json
-├── Dockerfile
-└── README.md
-```
-
-Additional GitHub Actions, test and configuration files may be present.
+- [Documentation française](docs/fr.md)
+- [English documentation](docs/en.md)
 
 ## Development
 
-Install dependencies:
+The integration is built with:
+
+- Node.js
+- Gladys Assistant Integration SDK
+- JavaScript `Intl.DateTimeFormat`
+- Docker
+- GitHub Actions
+
+Run locally:
 
 ```bash
 npm ci
-```
-
-Run tests:
-
-```bash
 npm test
+npm run lint
+npm run format:check
 ```
 
-Start the integration:
+The integration requires Gladys connection settings to run outside its normal installation environment.
 
-```bash
-npm start
-```
+## Releases
 
-Starting the integration requires a correctly configured Gladys environment.
+Docker images are published to GitHub Container Registry:
 
-## Compatibility status
+`ghcr.io/bnabih/gladys-world-clocks`
 
-The clock calculation logic has been implemented.
+Release builds target:
 
-The following items still require end-to-end verification:
+- `linux/amd64`
+- `linux/arm64`
 
-- Dashboard widget rendering
-- Complete IANA dropdown compatibility
-- Docker image publication
-- Installation and refresh behavior on Gladys 5.3.2
+## Known limitations
+
+- Clocks are refreshed through Gladys widget requests rather than a browser-side timer.
+- A short delay may occur at minute changes.
+- The current widget does not provide a continuously ticking seconds display.
+- Time zone selection depends on the options supported by the integration manifest.
+
+## Project
+
+**Repository:** https://github.com/bnabih/gladys-world-clocks
 
 ## License
 
-Apache License 2.0.
+Licensed under the Apache License, Version 2.0.
 
-See the `LICENSE` file.
+See [LICENSE](LICENSE).
 
-## Credits
-
-Built using the Gladys Assistant JavaScript integration template and SDK.
-
-- Gladys Assistant: https://gladysassistant.com
-- Gladys Assistant GitHub: https://github.com/GladysAssistant
-- Project repository: https://github.com/bnabih/gladys-world-clocks
+Built using the Gladys Assistant JavaScript integration SDK and template.
