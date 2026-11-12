@@ -53,28 +53,28 @@ Si l'intégration n'apparaît pas dans le catalogue, utilisez l'option d'install
 
 Le widget propose neuf paramètres.
 
-| Paramètre | Description |
-|---|---|
-| `clock_count` | Nombre d'horloges à afficher (1 à 4) |
-| `name_1` | Nom de la première horloge |
-| `timezone_1` | Fuseau horaire de la première horloge |
-| `name_2` | Nom de la deuxième horloge |
-| `timezone_2` | Fuseau horaire de la deuxième horloge |
-| `name_3` | Nom de la troisième horloge |
-| `timezone_3` | Fuseau horaire de la troisième horloge |
-| `name_4` | Nom de la quatrième horloge |
-| `timezone_4` | Fuseau horaire de la quatrième horloge |
+| Paramètre     | Description                            |
+| ------------- | -------------------------------------- |
+| `clock_count` | Nombre d'horloges à afficher (1 à 4)   |
+| `name_1`      | Nom de la première horloge             |
+| `timezone_1`  | Fuseau horaire de la première horloge  |
+| `name_2`      | Nom de la deuxième horloge             |
+| `timezone_2`  | Fuseau horaire de la deuxième horloge  |
+| `name_3`      | Nom de la troisième horloge            |
+| `timezone_3`  | Fuseau horaire de la troisième horloge |
+| `name_4`      | Nom de la quatrième horloge            |
+| `timezone_4`  | Fuseau horaire de la quatrième horloge |
 
 Les paramètres des horloges non affichées sont conservés dans la configuration du widget.
 
 ### Configuration initiale
 
-| Horloge | Nom | Fuseau horaire |
-|---|---|---|
-| 1 | Locale | Europe/Zurich |
-| 2 | Beyrouth | Asia/Beirut |
-| 3 | Casablanca | Africa/Casablanca |
-| 4 | Paris | Europe/Paris |
+| Horloge | Nom        | Fuseau horaire    |
+| ------- | ---------- | ----------------- |
+| 1       | Locale     | Europe/Zurich     |
+| 2       | Beyrouth   | Asia/Beirut       |
+| 3       | Casablanca | Africa/Casablanca |
+| 4       | Paris      | Europe/Paris      |
 
 Ces valeurs peuvent être modifiées à tout moment.
 
@@ -113,7 +113,7 @@ Aucune API météo ou service horaire externe n'est nécessaire.
 Le widget utilise actuellement :
 
 ```javascript
-ttl_seconds: 10
+ttl_seconds: 10;
 ```
 
 Cette valeur correspond à une durée de cache de 10 secondes.

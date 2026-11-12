@@ -54,28 +54,28 @@ If the integration is not listed in the catalog, use the GitHub installation opt
 
 The widget supports nine settings.
 
-| Setting | Description |
-|---|---|
+| Setting       | Description                       |
+| ------------- | --------------------------------- |
 | `clock_count` | Number of clocks to display (1–4) |
-| `name_1` | First clock label |
-| `timezone_1` | First clock time zone |
-| `name_2` | Second clock label |
-| `timezone_2` | Second clock time zone |
-| `name_3` | Third clock label |
-| `timezone_3` | Third clock time zone |
-| `name_4` | Fourth clock label |
-| `timezone_4` | Fourth clock time zone |
+| `name_1`      | First clock label                 |
+| `timezone_1`  | First clock time zone             |
+| `name_2`      | Second clock label                |
+| `timezone_2`  | Second clock time zone            |
+| `name_3`      | Third clock label                 |
+| `timezone_3`  | Third clock time zone             |
+| `name_4`      | Fourth clock label                |
+| `timezone_4`  | Fourth clock time zone            |
 
 Settings for hidden clocks are preserved.
 
 ### Default configuration
 
-| Clock | Label | Time zone |
-|---|---|---|
-| 1 | Locale | Europe/Zurich |
-| 2 | Beyrouth | Asia/Beirut |
-| 3 | Casablanca | Africa/Casablanca |
-| 4 | Paris | Europe/Paris |
+| Clock | Label      | Time zone         |
+| ----- | ---------- | ----------------- |
+| 1     | Locale     | Europe/Zurich     |
+| 2     | Beyrouth   | Asia/Beirut       |
+| 3     | Casablanca | Africa/Casablanca |
+| 4     | Paris      | Europe/Paris      |
 
 All default labels and time zones can be changed.
 
@@ -114,7 +114,7 @@ No external time API or API key is required.
 The widget currently uses:
 
 ```javascript
-ttl_seconds: 10
+ttl_seconds: 10;
 ```
 
 This specifies a 10-second cache duration.
@@ -194,13 +194,13 @@ The project uses:
 
 ### Source files
 
-| File | Purpose |
-|---|---|
-| `index.js` | Integration initialization and SDK connection |
-| `src/widgets.js` | Dashboard widget definition |
-| `src/worldClocks.js` | Time zone calculations and clock rows |
-| `gladys-assistant-integration.json` | Integration manifest and widget settings |
-| `test/` | Automated tests |
+| File                                | Purpose                                       |
+| ----------------------------------- | --------------------------------------------- |
+| `index.js`                          | Integration initialization and SDK connection |
+| `src/widgets.js`                    | Dashboard widget definition                   |
+| `src/worldClocks.js`                | Time zone calculations and clock rows         |
+| `gladys-assistant-integration.json` | Integration manifest and widget settings      |
+| `test/`                             | Automated tests                               |
 
 ### Testing
 

@@ -20,12 +20,12 @@ Gladys World Clocks is a lightweight external integration designed for users who
 
 ## Default clocks
 
-| Label | IANA time zone |
-|---|---|
-| Locale | Europe/Zurich |
-| Beyrouth | Asia/Beirut |
+| Label      | IANA time zone    |
+| ---------- | ----------------- |
+| Locale     | Europe/Zurich     |
+| Beyrouth   | Asia/Beirut       |
 | Casablanca | Africa/Casablanca |
-| Paris | Europe/Paris |
+| Paris      | Europe/Paris      |
 
 All labels and time zones can be customized.
 
