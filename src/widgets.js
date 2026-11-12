@@ -6,7 +6,7 @@ export const WIDGETS = {
   [WORLD_CLOCKS_WIDGET]: {
     async get(_gladys, { settings = {} } = {}) {
       return {
-        ttl_seconds: 60,
+        ttl_seconds: 10,
         components: [{ type: 'status', items: clockRows(settings) }],
       };
     },
