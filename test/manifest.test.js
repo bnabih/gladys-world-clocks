@@ -69,7 +69,7 @@ test('four clock names are configurable', () => {
     const field = getSetting(`name_${i}`);
 
     assert.ok(field, `name_${i} is missing`);
-    assert.equal(field.type, 'text');
+    assert.equal(field.type, 'string');
   }
 });
 
