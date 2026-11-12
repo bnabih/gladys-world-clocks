@@ -2,7 +2,7 @@
   "name": "gladys-world-clocks",
   "version": "1.0.0",
   "private": true,
-  "description": "Official starter template to build an external integration for Gladys Assistant with the JavaScript SDK.",
+  "description": "Configurable world clocks widget for Gladys Assistant",
   "type": "module",
   "main": "index.js",
   "scripts": {
