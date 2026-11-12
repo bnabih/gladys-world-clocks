@@ -7,6 +7,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: format-main
+  cancel-in-progress: false
+
 jobs:
   format:
     runs-on: ubuntu-latest
@@ -28,7 +32,9 @@ jobs:
         run: npm ci
 
       - name: Format files
-        run: npm run format
+        run: |
+          npx prettier --write . \
+            --ignore-path .prettierignore
 
       - name: Commit formatted files
         run: |
@@ -37,7 +43,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # Exclude workflow files from the commit
+          # Restore workflow changes before committing
+          git restore -- .github/workflows/
+
+          # Stage all other formatting changes
           git add -u -- . ':!.github/workflows/**'
 
           if git diff --cached --quiet; then
@@ -47,7 +56,7 @@ jobs:
 
           git commit -m "style: format code with Prettier"
 
-          # Replay the formatting commit on the latest main
+          # Synchronize with latest main
           git fetch origin main
           git rebase origin/main
 
