@@ -6,8 +6,8 @@
     "en": "Configurable world clocks dashboard widget (1 to 4 clocks).",
     "fr": "Widget de 1 à 4 horloges mondiales configurables."
   },
-  "version": "1.0.4",
-  "docker_image": "ghcr.io/bnabih/gladys-world-clocks:1.0.4",
+  "version": "1.0.5",
+  "docker_image": "ghcr.io/bnabih/gladys-world-clocks:1.0.5",
   "gladys_version": ">=5.1.0",
   "cover_image": "https://raw.githubusercontent.com/bnabih/gladys-world-clocks/main/cover.png",
   "widgets": [
