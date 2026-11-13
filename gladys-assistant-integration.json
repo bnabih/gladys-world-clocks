@@ -14819,5 +14819,35 @@
         }
       ]
     }
+  ],
+  "config_schema": [
+    {
+      "key": "about_world_clocks",
+      "type": "section",
+      "label": {
+        "en": "About World Clocks",
+        "fr": "À propos de World Clocks"
+      },
+      "description": {
+        "en": "Display 1 to 4 world clocks or a single clock on your Gladys dashboard. Customize names and time zones directly in each widget.",
+        "fr": "Affichez de 1 à 4 horloges mondiales ou une horloge individuelle sur votre tableau de bord Gladys. Personnalisez les noms et les fuseaux horaires directement dans chaque widget."
+      },
+      "links": [
+        {
+          "url": "https://github.com/bnabih/gladys-world-clocks/blob/main/docs/fr.md",
+          "label": {
+            "en": "French documentation",
+            "fr": "Documentation française"
+          }
+        },
+        {
+          "url": "https://github.com/bnabih/gladys-world-clocks/blob/main/docs/en.md",
+          "label": {
+            "en": "English documentation",
+            "fr": "Documentation anglaise"
+          }
+        }
+      ]
+    }
   ]
 }
