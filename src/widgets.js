@@ -1,3 +1,4 @@
+
 import { clockRows, formatClock } from './worldClocks.js';
 
 export const WORLD_CLOCKS_WIDGET = 'world_clocks';
@@ -24,6 +25,7 @@ export const WIDGETS = {
       const timezone = settings.timezone || 'Europe/Zurich';
 
       let time;
+
       try {
         time = formatClock(timezone);
       } catch {
@@ -33,10 +35,6 @@ export const WIDGETS = {
       return {
         ttl_seconds: 10,
         components: [
-          {
-            type: 'text',
-            text: name,
-          },
           {
             type: 'value',
             label: name,
