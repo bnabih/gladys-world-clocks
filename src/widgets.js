@@ -1,4 +1,3 @@
-
 import { clockRows, formatClock } from './worldClocks.js';
 
 export const WORLD_CLOCKS_WIDGET = 'world_clocks';
