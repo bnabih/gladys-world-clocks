@@ -41,7 +41,10 @@ test('world_clocks widget is declared', () => {
 });
 
 test('only the expected widget is registered', () => {
-  assert.deepEqual(Object.keys(WIDGETS), ['world_clocks']);
+  assert.deepEqual(Object.keys(WIDGETS), [
+    'world_clocks',
+    'single_world_clock',
+  ]);
 });
 
 test('widget has nine settings', () => {
