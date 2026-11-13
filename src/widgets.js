@@ -1,3 +1,4 @@
+
 import { clockRows, formatClock } from './worldClocks.js';
 
 export const WORLD_CLOCKS_WIDGET = 'world_clocks';
@@ -35,10 +36,14 @@ export const WIDGETS = {
         ttl_seconds: 10,
         components: [
           {
-            type: 'value',
-            label: name,
-            value: time,
-            icon: 'clock',
+            type: 'text',
+            variant: 'heading',
+            text: time,
+          },
+          {
+            type: 'text',
+            variant: 'caption',
+            text: name,
           },
         ],
       };
