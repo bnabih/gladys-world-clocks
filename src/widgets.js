@@ -8,12 +8,11 @@ export const WIDGETS = {
     async get(_gladys, { settings = {} } = {}) {
       return {
         ttl_seconds: 10,
-        components: [
-          {
-            type: 'status',
-            items: clockRows(settings),
-          },
-        ],
+        components: clockRows(settings).map((clock) => ({
+          type: 'value',
+          label: clock.label,
+          value: clock.value,
+        })),
       };
     },
   },
