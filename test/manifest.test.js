@@ -127,3 +127,22 @@ test('demo actions and scenes are removed', () => {
   assert.equal((manifest.scene_actions ?? []).length, 0);
   assert.equal((manifest.scene_triggers ?? []).length, 0);
 });
+
+test('single world clock is configurable', () => {
+  const single = manifest.widgets.find(
+    (item) => item.key === 'single_world_clock'
+  );
+
+  assert.ok(single);
+  assert.equal(typeof WIDGETS.single_world_clock?.get, 'function');
+
+  const name = single.settings.find((item) => item.key === 'name');
+  const timezone = single.settings.find(
+    (item) => item.key === 'timezone'
+  );
+
+  assert.equal(name.type, 'string');
+  assert.equal(timezone.type, 'select');
+  assert.ok(timezone.options.length > 100);
+});
+
