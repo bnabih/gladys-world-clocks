@@ -41,10 +41,7 @@ test('world_clocks widget is declared', () => {
 });
 
 test('only the expected widget is registered', () => {
-  assert.deepEqual(Object.keys(WIDGETS), [
-    'world_clocks',
-    'single_world_clock',
-  ]);
+  assert.deepEqual(Object.keys(WIDGETS), ['world_clocks', 'single_world_clock']);
 });
 
 test('widget has nine settings', () => {
@@ -129,20 +126,15 @@ test('demo actions and scenes are removed', () => {
 });
 
 test('single world clock is configurable', () => {
-  const single = manifest.widgets.find(
-    (item) => item.key === 'single_world_clock'
-  );
+  const single = manifest.widgets.find((item) => item.key === 'single_world_clock');
 
   assert.ok(single);
   assert.equal(typeof WIDGETS.single_world_clock?.get, 'function');
 
   const name = single.settings.find((item) => item.key === 'name');
-  const timezone = single.settings.find(
-    (item) => item.key === 'timezone'
-  );
+  const timezone = single.settings.find((item) => item.key === 'timezone');
 
   assert.equal(name.type, 'string');
   assert.equal(timezone.type, 'select');
   assert.ok(timezone.options.length > 100);
 });
-
