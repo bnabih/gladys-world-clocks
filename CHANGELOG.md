@@ -10,6 +10,11 @@ the notes of the version's GitHub Release.
 
 ## [Unreleased]
 
+### Changed
+
+- Declared `transports: ["local"]`: the clocks are computed on the machine, and
+  the Local filter of the Gladys catalog now finds the integration.
+
 ## [1.0.7] - 2026-11-13
 
 ## [1.0.6] - 2026-11-13
