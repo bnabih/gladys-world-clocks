@@ -35,6 +35,10 @@ test('Gladys minimum version is compatible', () => {
   assert.match(manifest.gladys_version, /^>=5\./);
 });
 
+test('the transport is local: the clocks are computed on the machine', () => {
+  assert.deepEqual(manifest.transports, ['local']);
+});
+
 test('world_clocks widget is declared', () => {
   assert.ok(widget, 'world_clocks widget is missing');
   assert.equal(typeof WIDGETS.world_clocks?.get, 'function');
